@@ -3,6 +3,7 @@ import React from "react";
 import "../CssFile/Form.css";
 // import $ from 'jquery';
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 
 
@@ -12,57 +13,7 @@ import { useForm } from "react-hook-form";
 
 const Form = () => {
   
-  // useEffect((e) => {
-    
-  //   // POST request using fetch inside useEffect React hook
-  //   const requestOptions = {
-  //     url: "https://gorest.co.in/public/v1/users",
-  //     method: "POST",
-  //     //"timeout": 0,
-  //     headers: {
-  //       Authorization:
-  //         "Bearer 21fe67cd781faf84f607ee648e2a689e904e937e5981184175e7e62f994d4836",
-  //       "Content-Type": "application/json",
-      // },
-      // data: JSON.stringify({
-      //   name: document.getElementById("username").value,
-      //   email: document.getElementById("email").value,
-      //   gender: document.getElementById("gender").value,
-      //   status: document.getElementById("status").value,
-      // }),
-    // };
-
-    // $.ajax(requestOptions).done(function (response) {
-    //   console.log(response);
-    //   if ((response.status = 201)) {
-    //     // write all response code like....201, 401, 422 etc
-    //     console.log("record successfully created ");
-
-    //     console.log(response.data.id); //get id after the send data
-
-    //     localStorage.setItem("id", response.data.id); //set id in localStorge
-
-    //     // location.href = "detailsOfSignUpForm.html"; // send the next page
-    //   } else if ((response.status = 422)) {
-    //     console.log("this Email is already use please Enter new Email ");
-    //   } else {
-    //     console.log("check  email ");
-    //   }
-    // });
-    //         method: 'POST',
-    //         headers:{
-    //           "Authorization": "Bearer 21fe67cd781faf84f607ee648e2a689e904e937e5981184175e7e62f994d4836",
-    //           "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify({ title: 'React Hooks POST Request Example' })
-    //     };
-    //     fetch('https://reqres.in/api/posts', requestOptions)
-    //         .then(response => response.json())
-    //         .then(data => setPostId(data.id));
-
-    // // empty dependency array means this effect will only run once (like componentDidMount in classes)
-    //  }, []);
-  //});
+  
 
   const {
     register,
@@ -88,8 +39,10 @@ const Form = () => {
       body:JSON.stringify(datat)
     }).then((result)=>{
       result.json().then((resp)=>{
-        console.warn("resp",resp);
-        console.log(resp);
+        
+        console.log(resp.data);
+        console.log("id :",resp.data.id)
+        localStorage.setItem('id', resp.data.id);  
       })
     })
 
@@ -155,7 +108,7 @@ const Form = () => {
                 type="radio"
                 id="r1"
                 name="select"
-                {...register("Gender")}
+                {...register("gender")}
                 value="female"
               />{" "}
               Female
@@ -163,7 +116,7 @@ const Form = () => {
                 type="radio"
                 id="r2"
                 name="select"
-                {...register("Gender")}
+                {...register("gender")}
                 value="male"
                 checked
               />{" "}
@@ -172,7 +125,7 @@ const Form = () => {
                 type="radio"
                 id="r3"
                 name="select"
-                {...register("Gender")}
+                {...register("gender")}
                 value="trans"
               />{" "}
               Trans
@@ -180,7 +133,7 @@ const Form = () => {
             {/* <!-- gender div close --> */}
             <div className="input-field">
               Status :
-              <select {...register("Status")}>
+              <select {...register("status")}>
                 <option value="Inactive">Inactive</option>
                 <option value="Active">Active</option>
               </select>
@@ -194,6 +147,9 @@ const Form = () => {
           </form>
         </div>
       </div>
+      <div>
+             <Link className="btn btn-success" to="#"> click me</Link>
+         </div>
     </div>
   );
 };
