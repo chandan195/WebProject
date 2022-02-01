@@ -1,7 +1,7 @@
 import React from "react";
 // import { Link, NavLink } from "react-router-dom";
 import "../CssFile/Form.css";
-// import $ from 'jquery';
+ import $ from 'jquery';
 import { useForm } from "react-hook-form";
 
 
@@ -91,8 +91,28 @@ const Form = () => {
         console.warn("resp",resp);
         console.log(resp);
       })
+
+      $.ajax((datat).done( (response) =>{
+        console.log(response);
+        if ((response.status = 201)) {
+          
+          console.log("record successfully created ");
+  
+          console.log(response.data.id); //get id after the send data
+  
+          // localStorage.setItem("id", response.data.id); //set id in localStorge
+  
+          // location.href = "detailsOfSignUpForm.html"; // send the next page
+        } else if ((response.status = 422)) {
+          console.log("this Email is already use please Enter new Email ");
+        } else {
+          console.log("check  email ");
+        }
+      })
+    )
     })
 
+    
   };
   // ....................................
 
@@ -155,7 +175,7 @@ const Form = () => {
                 type="radio"
                 id="r1"
                 name="select"
-                {...register("Gender")}
+                {...register("gender")}
                 value="female"
               />{" "}
               Female
@@ -163,7 +183,7 @@ const Form = () => {
                 type="radio"
                 id="r2"
                 name="select"
-                {...register("Gender")}
+                {...register("gender")}
                 value="male"
                 checked
               />{" "}
@@ -172,7 +192,7 @@ const Form = () => {
                 type="radio"
                 id="r3"
                 name="select"
-                {...register("Gender")}
+                {...register("gender")}
                 value="trans"
               />{" "}
               Trans
@@ -180,7 +200,7 @@ const Form = () => {
             {/* <!-- gender div close --> */}
             <div className="input-field">
               Status :
-              <select {...register("Status")}>
+              <select {...register("status")}>
                 <option value="Inactive">Inactive</option>
                 <option value="Active">Active</option>
               </select>
