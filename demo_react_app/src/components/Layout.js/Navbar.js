@@ -51,14 +51,14 @@ const Navbar = () => {
                 </Link>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <Link className="dropdown-item" to="#">
-                      Action
+                    <Link className="dropdown-item" to="/AllUserDetails">
+                      All User Details
                              
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="#">
-                      Another action
+                    <Link className="dropdown-item" to="/UserDetails">
+                    User Details
                     </Link>
                   </li>
                   <li>
