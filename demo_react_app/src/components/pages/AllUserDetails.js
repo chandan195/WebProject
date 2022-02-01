@@ -1,6 +1,15 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+//  import { button } from "react-router-dom";
+
 
 const AllUserDetails = () => {
+  function deleteUser(){
+    
+    console.log("hello")
+  }
+
+
+
   const [data3, setdata] = useState([]);
   const url = "https://gorest.co.in/public/v1/users";
   // const url = "https://jsonplaceholder.typicode.com/todos"
@@ -19,7 +28,7 @@ const AllUserDetails = () => {
 
   return (
     <div>
-      <table className="table table-bordered table-dark">
+      <table className="table table-bordered table-dark" id="table">
         <thead>
           <tr>
             <th scope="col">Id</th>
@@ -31,17 +40,25 @@ const AllUserDetails = () => {
           </tr>
         </thead>
         <tbody>
-          {data3.map((item) => {
+          {/* {data3.map((item) => { */}
+          {data3.map((item,i) => {
             return (
-              <tr>
-                <th scope="item" key={item.id}>
+              // <tr key={item.id}>
+              <tr key={i}>
+                <td scope="item" >
                   {item.id}
-                </th>
+                </td>
                 <td>{item.name}</td>
                 <td>{item.email}</td>
                 <td>{item.gender}</td>
                 <td>{item.status}</td>
-                {/* <td>{item.status}</td> */}
+                <td>
+                  
+                  <button  className="btn btn-primary" onClick={deleteUser}>View </button>
+                  <button  className="btn btn-warning" >Edit </button>
+                  {/* <button  className="btn btn-danger" onClick={() => this.deleteUser(item.id)}>Delete </button> */}
+                 
+                </td>
               </tr>
             );
           })}
