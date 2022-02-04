@@ -2,12 +2,13 @@ import React from "react";
 
 import { Link, NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-primary">
       <div className="contaier">
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="/"></Link>
+        
+    <nav className="navbar navbar-expand-lg navbar-light bg-primary">
+     
+          <a className="navbar-brand" to="/"> {props.title}</a>
           {/*  <a> to Link  and href = to */}
           <button
             className="navbar-toggler"
@@ -51,14 +52,14 @@ const Navbar = () => {
                 </Link>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <Link className="dropdown-item" to="#">
-                      Action
+                    <Link className="dropdown-item" to="/AllUserDetails">
+                      All User Details
                              
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="#">
-                      Another action
+                    <Link className="dropdown-item" to="/UserDetails">
+                    User Details
                     </Link>
                   </li>
                   <li>
@@ -73,9 +74,10 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-        </div>
-      </div>
+      
     </nav>
+      </div>
+     
   );
 };
 
